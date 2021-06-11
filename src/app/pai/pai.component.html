@@ -1,0 +1,56 @@
+<div class="content">
+
+    <form [formGroup]="pessoaForm" (ngSubmit)="addPessoas()"  class="example-form">
+      <mat-form-field  class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          placeholder="Nome do usuário"
+          formControlName="nome"
+        />
+        <mat-error *ngIf="pessoaForm.get('nome')?.hasError('required')">
+          Nome is required
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field  class="example-full-width">
+        <mat-label>Idade</mat-label>
+        <input matInput type="number" formControlName="idade" />
+        <mat-error
+          *ngIf="
+            (pessoaForm.get('idade')?.hasError('min') || pessoaForm.get('idade')?.hasError('max')) &&
+            !pessoaForm.get('idade')?.hasError('required')
+          "
+        >
+          A idade tem que ser maior que <strong>18 anos e menor que 99</strong>
+        </mat-error>
+        <mat-error *ngIf="pessoaForm.get('idade')?.hasError('required')">
+          Idade is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field  class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error
+          *ngIf="
+            pessoaForm.get('email')?.hasError('email') &&
+            !pessoaForm.get('email')?.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="pessoaForm.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    
+      <button mat-button type="submit" color="primary">Adicionar pessoa</button>
+    </form>
+    
+    <mat-divider></mat-divider>
+    <br/>
+    <br/>
+    <br/>
+    
+    <app-filho [pessoas]="pessoas" (editarEvent)="editarItem($event)"></app-filho>
+</div>

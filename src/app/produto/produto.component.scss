@@ -1,0 +1,33 @@
+.esquerdo{
+    width: 40vw;
+    height: 100vh;
+    border: 1px solid gray;
+    border-radius: 15px;
+    overflow: auto;
+    display:flex;
+    flex-direction: column;
+}
+.produto{
+    width: 400px;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 0 10px;
+    margin:10px 0 10px 0;
+}
+.img{
+    width: 100px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+}
+.right{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.main{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
